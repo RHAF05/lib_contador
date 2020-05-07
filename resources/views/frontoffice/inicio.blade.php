@@ -19,7 +19,7 @@
                             <h5 class="card-title">{{$producto->nombre}}</h5>
                             <p class="card-text text-right">${{number_format($producto->precio,2,',','.')}}</p>
                             <a href="{{route('producto.detalle',$producto->id)}}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
-                            <a href="#" class="btn btn-success"><i class="fas fa-shopping-cart"></i></a>
+                            <a href="{{ route('carrito-agregar',$producto->id) }}" class="btn btn-success"><i class="fas fa-shopping-cart"></i></a>
                         </div>
                     </div>
                 </div>

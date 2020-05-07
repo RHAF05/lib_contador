@@ -15,7 +15,10 @@ class CreateDepartamentos extends Migration
     {
         Schema::create('departamentos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre');
+            $table->string('codigo_dpto');
+            $table->string('nombre_dpto');
+            $table->unsignedBigInteger('codigo_pais');
+            $table->foreign('codigo_pais')->references('id')->on('paises');
             $table->timestamps();
         });
     }

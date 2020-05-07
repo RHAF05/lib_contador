@@ -15,9 +15,13 @@ class CreateCiudades extends Migration
     {
         Schema::create('ciudades', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre');
-            $table->unsignedBigInteger('departamento_id');
-            $table->foreign('departamento_id')->references('id')->on('departamentos');
+            $table->string('codigo_municipio');
+            $table->string('nombre_municipio');
+            $table->double('latitud')->comment('Latitud georeferenciacion');
+            $table->double('longitud')->comment('Longitud Georeferenciacion');
+
+            $table->unsignedBigInteger('codigo_dpto');
+            $table->foreign('codigo_dpto')->references('id')->on('departamentos');
             $table->timestamps();
         });
     }

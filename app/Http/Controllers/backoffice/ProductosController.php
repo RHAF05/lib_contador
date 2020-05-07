@@ -35,6 +35,21 @@ class ProductosController extends Controller
         return view('backoffice.productos.index',compact('productos','request','categorias'));
     }
 
+    function fetch_data(Request $request)
+    {
+            $categorias = Categoria::all();
+            //$productos = Producto::all();
+            // $productos = Producto::where('nombre','LIKE','%'.$request->nombre.'%')->get();
+            $productos = Producto::nombre($request->nombre)
+                                    ->categoria($request->categoria_id)
+                                    ->precio($request->desde,$request->hasta)
+                                    // ->get(); //Sin paginacion, trae todos los registros
+                                    ->paginate(10); //Paginar en laravel
+
+            return view('backoffice.productos.listado',compact('productos','request','categorias'));
+
+    }
+
     /**
      * Función para mostrar el formulario para crear un nuevo producto
      */

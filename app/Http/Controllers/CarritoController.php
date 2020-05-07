@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Orden;
 use App\Ordendetalle;
 use App\Producto;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class CarritoController extends Controller
     //Función para mostrar el carrito
     public function mostrar(){
     	$carrito = Session::get('carrito');
-    	return view('carrito',compact('carrito'));
+    	return view('frontoffice.carrito',compact('carrito'));
     }
 
     //Función para agregar items al carrito
@@ -61,20 +62,30 @@ class CarritoController extends Controller
     public function ordenar(){
         $carrito = Session::get('carrito');
         if($carrito){
-            $numero = Ordendetalle::max('numero')+1;
+
+
+            $numero = Orden::max('numero')+1;
             $now = new \DateTime();
             $fecha = $now->format('Y-m-d h:m:s');
 
+
+            $orden = new Orden();
+            $orden->numero = $numero;
+            $orden->fecha = $fecha;
+            $orden->user_id = Auth::user()->id;
+            $orden->estado_id = 1;
+            $orden->metodo_id = 1;
+            $orden->save();
+
             foreach($carrito as $producto){
-                $orden = Ordendetalle::create([
-                    'numero'=>$numero,
+                $orden_detalle = Ordendetalle::create([
+                    // 'numero'=>$numero,
                     'precio'=>$producto->precio,
                     'cantidad'=>$producto->cantcompra,
                     'fecha'=>$fecha,
-                    'idproducto'=>$producto->id,
-                    'idestado'=>1,
-                    'iduser'=>Auth::user()->id,
-                    'idcupon'=>1,
+                    'producto_id'=>$producto->id,
+                    'orden_id'=>$orden->id,
+                    // 'idcupon'=>1,
                 ]);
             }
 
@@ -84,7 +95,8 @@ class CarritoController extends Controller
 
     //Función para mostrar detalles de la Orden
     public function ordenDetallada($numero){
-        $productos = Ordendetalle::where('numero',$numero)->get();
-        return view('orden',compact('productos'));
+        $orden = Orden::where('numero',$numero)->get()->first();
+        $orden_detalle = Ordendetalle::where('orden_id',$orden->id)->get();
+        return view('frontoffice.orden',compact(['orden','orden_detalle']));
     }
 }
