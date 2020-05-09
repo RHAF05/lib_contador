@@ -1,42 +1,237 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="{{ route('inicio') }}">Librería del Contador</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="{{ route('inicio') }}">Inicio <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item"> <a class="nav-link" href="#">Nosotros</a> </li>
-        <li class="nav-item"> <a class="nav-link" href="#">Libros</a> </li>
-        <li class="nav-item"> <a class="nav-link" href="#">Contacto</a> </li>
-      </ul>
-      @guest
-
-      @else
-        <div class="nav-item dropdown">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                {{ Auth::user()->name }} <span class="caret"></span>
-            </a>
-
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-            </div>
+  <div class="top_nav_left">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
         </div>
-      @endguest
-      {{--<form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>--}}
-    </div>
-  </nav>
+
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav menu__list">
+            <li class="active menu__item menu__item--current"><a class="menu__link" href="{{ route('inicio') }}">Inicio <span class="sr-only">(current)</span></a></li>
+            <li class=" menu__item"><a class="menu__link" href="about.html">Quienes somos?</a></li>
+            <li class="dropdown menu__item">
+                <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Servicios <span class="caret"></span></a>
+                    <ul class="dropdown-menu multi-column columns-3">
+                        <div class="agile_inner_drop_nav_info">
+                            <div class="col-sm-6 multi-gd-img1 multi-gd-text ">
+                                <a href="mens.html"><img src="images/top2.jpg" alt=" "/></a>
+                            </div>
+                            <div class="col-sm-3 multi-gd-img">
+                                <ul class="multi-column-dropdown">
+                                    <li><a href="mens.html">Clothing</a></li>
+                                    <li><a href="mens.html">Wallets</a></li>
+                                    <li><a href="mens.html">Footwear</a></li>
+                                    <li><a href="mens.html">Watches</a></li>
+                                    <li><a href="mens.html">Accessories</a></li>
+                                    <li><a href="mens.html">Bags</a></li>
+                                    <li><a href="mens.html">Caps & Hats</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3 multi-gd-img">
+                                <ul class="multi-column-dropdown">
+                                    <li><a href="mens.html">Jewellery</a></li>
+                                    <li><a href="mens.html">Sunglasses</a></li>
+                                    <li><a href="mens.html">Perfumes</a></li>
+                                    <li><a href="mens.html">Beauty</a></li>
+                                    <li><a href="mens.html">Shirts</a></li>
+                                    <li><a href="mens.html">Sunglasses</a></li>
+                                    <li><a href="mens.html">Swimwear</a></li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </ul>
+            </li>
+            <li class="dropdown menu__item">
+                <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Software <span class="caret"></span></a>
+                    <ul class="dropdown-menu multi-column columns-3">
+                        <div class="agile_inner_drop_nav_info">
+                            <div class="col-sm-3 multi-gd-img">
+                                <ul class="multi-column-dropdown">
+                                    <li><a href="womens.html">Clothing</a></li>
+                                    <li><a href="womens.html">Wallets</a></li>
+                                    <li><a href="womens.html">Footwear</a></li>
+                                    <li><a href="womens.html">Watches</a></li>
+                                    <li><a href="womens.html">Accessories</a></li>
+                                    <li><a href="womens.html">Bags</a></li>
+                                    <li><a href="womens.html">Caps & Hats</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3 multi-gd-img">
+                                <ul class="multi-column-dropdown">
+                                    <li><a href="womens.html">Jewellery</a></li>
+                                    <li><a href="womens.html">Sunglasses</a></li>
+                                    <li><a href="womens.html">Perfumes</a></li>
+                                    <li><a href="womens.html">Beauty</a></li>
+                                    <li><a href="womens.html">Shirts</a></li>
+                                    <li><a href="womens.html">Sunglasses</a></li>
+                                    <li><a href="womens.html">Swimwear</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6 multi-gd-img multi-gd-text ">
+                                <a href="womens.html"><img src="images/top1.jpg" alt=" "/></a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </ul>
+            </li>
+            <li class="menu__item dropdown"><a class="menu__link" href="#" >Noticias</a></li>
+            <li class=" menu__item"><a class="menu__link" href="contact.html">Contacto</a></li>
+
+            @guest
+
+            @else
+                <div class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </div>
+            @endguest
+          </ul>
+        </div>
+      </div>
+    </nav>
+</div>
+<div class="top_nav_right">
+    <div class="wthreecartaits wthreecartaits2 cart cart box_1">
+                <form action="#" method="post" class="last">
+                <input type="hidden" name="cmd" value="_cart">
+                <input type="hidden" name="display" value="1">
+                <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
+            </form>
+
+                </div>
+</div>
+
+
+
+{{-- MENU DE EJEMPLO
+  <div class="top_nav_left">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav menu__list">
+            <li class="active menu__item menu__item--current"><a class="menu__link" href="index.html">Home <span class="sr-only">(current)</span></a></li>
+            <li class=" menu__item"><a class="menu__link" href="about.html">About</a></li>
+            <li class="dropdown menu__item">
+                <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Men's wear <span class="caret"></span></a>
+                    <ul class="dropdown-menu multi-column columns-3">
+                        <div class="agile_inner_drop_nav_info">
+                            <div class="col-sm-6 multi-gd-img1 multi-gd-text ">
+                                <a href="mens.html"><img src="images/top2.jpg" alt=" "/></a>
+                            </div>
+                            <div class="col-sm-3 multi-gd-img">
+                                <ul class="multi-column-dropdown">
+                                    <li><a href="mens.html">Clothing</a></li>
+                                    <li><a href="mens.html">Wallets</a></li>
+                                    <li><a href="mens.html">Footwear</a></li>
+                                    <li><a href="mens.html">Watches</a></li>
+                                    <li><a href="mens.html">Accessories</a></li>
+                                    <li><a href="mens.html">Bags</a></li>
+                                    <li><a href="mens.html">Caps & Hats</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3 multi-gd-img">
+                                <ul class="multi-column-dropdown">
+                                    <li><a href="mens.html">Jewellery</a></li>
+                                    <li><a href="mens.html">Sunglasses</a></li>
+                                    <li><a href="mens.html">Perfumes</a></li>
+                                    <li><a href="mens.html">Beauty</a></li>
+                                    <li><a href="mens.html">Shirts</a></li>
+                                    <li><a href="mens.html">Sunglasses</a></li>
+                                    <li><a href="mens.html">Swimwear</a></li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </ul>
+            </li>
+            <li class="dropdown menu__item">
+                <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Women's wear <span class="caret"></span></a>
+                    <ul class="dropdown-menu multi-column columns-3">
+                        <div class="agile_inner_drop_nav_info">
+                            <div class="col-sm-3 multi-gd-img">
+                                <ul class="multi-column-dropdown">
+                                    <li><a href="womens.html">Clothing</a></li>
+                                    <li><a href="womens.html">Wallets</a></li>
+                                    <li><a href="womens.html">Footwear</a></li>
+                                    <li><a href="womens.html">Watches</a></li>
+                                    <li><a href="womens.html">Accessories</a></li>
+                                    <li><a href="womens.html">Bags</a></li>
+                                    <li><a href="womens.html">Caps & Hats</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3 multi-gd-img">
+                                <ul class="multi-column-dropdown">
+                                    <li><a href="womens.html">Jewellery</a></li>
+                                    <li><a href="womens.html">Sunglasses</a></li>
+                                    <li><a href="womens.html">Perfumes</a></li>
+                                    <li><a href="womens.html">Beauty</a></li>
+                                    <li><a href="womens.html">Shirts</a></li>
+                                    <li><a href="womens.html">Sunglasses</a></li>
+                                    <li><a href="womens.html">Swimwear</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6 multi-gd-img multi-gd-text ">
+                                <a href="womens.html"><img src="images/top1.jpg" alt=" "/></a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </ul>
+            </li>
+            <li class="menu__item dropdown">
+               <a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">Short Codes <b class="caret"></b></a>
+                        <ul class="dropdown-menu agile_short_dropdown">
+                            <li><a href="icons.html">Web Icons</a></li>
+                            <li><a href="typography.html">Typography</a></li>
+                        </ul>
+            </li>
+            <li class=" menu__item"><a class="menu__link" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</div>
+<div class="top_nav_right">
+    <div class="wthreecartaits wthreecartaits2 cart cart box_1">
+                <form action="#" method="post" class="last">
+                <input type="hidden" name="cmd" value="_cart">
+                <input type="hidden" name="display" value="1">
+                <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
+            </form>
+
+                </div>
+</div>
+--}}
